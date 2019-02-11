@@ -30,11 +30,11 @@ def bulk_tweet_shortener(tweet)
 end
 
 def selective_tweet_shortener(tweet)
-  tweet.split(" ").map do |words|
-    if words.length > 140
-      word_substituter(words)
+  tweet.split(" ").map do |phrase|
+    if phrase.length > 140
+      word_substituter(phrase)
     else phrase.length <= 140
-      tweet
+      phrase
     end
   end
 end
@@ -42,9 +42,9 @@ end
 def shortened_tweet_truncator(tweet)
   tweet.split(" ").map do |phrase|
     if phrase.length > 140
-      word_substituter(phrase)[0...137] + "..."
+      word_substituter(phrase)[0...140] + "..."
     else
       phrase
     end
-  end
+  end.join(" ")
 end
